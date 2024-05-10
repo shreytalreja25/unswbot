@@ -50,7 +50,6 @@ function App() {
           <div className="chat-header">
             <img src={logo} alt="UNSW Logo" style={{ height: '80%', width: "40%" }} />
             <h2 style={{ color: "black",textAlign:"center" }}>Chat with UNSW Bot</h2>
-            <p>Connect with UNSW Help : 9 am - 5 pm </p>
             <button onClick={toggleChat} style={{color:"red",alignSelf:"baseline"}} id="close-button">X</button>
           </div>
           <div className="messages">
