@@ -18,7 +18,7 @@ The UNSW Chatbot is designed to enhance the experience of students, faculty, and
 ## Setup and Installation
 ```bash
 # Clone the repository
-git clone https://github.com/your-github-username/unsw-chatbot.git
+git clone https://github.com/shreytalreja25/unsw-chatbot.git
 
 # Navigate into the directory
 cd unsw-chatbot
