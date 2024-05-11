@@ -6,7 +6,7 @@ import logo from "./assets/unswlogo.jpeg";
 import loadingGif from "./assets/typing.gif";
 import responseSound from './assets/message-sound.mp3';  // Sound for receiving a message
 import sendSound from './assets/send-sound.mp3';         // Sound for sending a message
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [sessionId, setSessionId] = useState(uuidv4());
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -22,7 +23,10 @@ function App() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+    if (!isOpen) {
+      setSessionId(uuidv4());  // Generate a new session ID each time the chat is opened
+    }
+  }, [messages, isOpen]);
   const handleInputChange = (e) => {
     setInput(e.target.value);
   };
@@ -55,6 +59,7 @@ function App() {
     try {
       const response = await axios.post("http://localhost:5000/chat", {
         prompt: input,
+        session_id: sessionId
       });
       const botMessage = {
         text: response.data.response,
