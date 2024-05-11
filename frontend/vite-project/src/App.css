@@ -5,6 +5,11 @@
   overflow: hidden;
 }
 
+#unswlogo {
+  height: 80%;
+  width: 40%;
+}
+
 .chat-icon {
   position: fixed;
   bottom: 20px;
@@ -16,27 +21,33 @@
 .chat-icon img {
   width: 96px;
   height: 96px;
-  transition: transform 0.3s;  /* Ensure smooth transformation */
+  transition: transform 0.3s;
+  /* Ensure smooth transformation */
 }
 
 .chat-icon:hover img {
-  transform: scale(1.1);  /* Increase size by 10% */
+  transform: scale(1.1);
+  /* Increase size by 10% */
 }
 
 .chat-window {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensures the input box is pushed to the bottom */
-  height: 85vh; /* Adjust according to your preference */
+  justify-content: space-between;
+  /* Ensures the input box is pushed to the bottom */
+  height: 85vh;
+  /* Adjust according to your preference */
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 300px; /* Adjust the width as needed */
+  width: 300px;
+  /* Adjust the width as needed */
   background-color: #f8f8f8;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
-  overflow: hidden; /* Prevents content from overflowing */
+  overflow: hidden;
+  /* Prevents content from overflowing */
   scrollbar-width: thin;
 }
 
@@ -47,7 +58,8 @@
   justify-content: space-between;
 }
 
-input[type="text"], button {
+input[type="text"],
+button {
   padding: 10px;
   margin-top: 10px;
 }
@@ -59,12 +71,15 @@ input[type="text"], button {
   scrollbar-color: yellow;
   scrollbar-highlight-color: yellow;
   scrollbar-face-color: yellow;
-  overflow-y: auto; /* Allows scrolling within the message area */
-  flex-grow: 1; /* Allows the message area to expand to fill available space */
+  overflow-y: auto;
+  /* Allows scrolling within the message area */
+  flex-grow: 1;
+  /* Allows the message area to expand to fill available space */
 }
 
 #chat-input-controls {
-  width: 100%; /* Ensures the input controls fill the chat window */
+  width: 100%;
+  /* Ensures the input controls fill the chat window */
   display: flex;
   justify-content: space-evenly;
 }
@@ -101,7 +116,8 @@ input[type="text"], button {
   margin-top: 4px;
 }
 
-#chat-input-controls input, #chat-input-controls button {
+#chat-input-controls input,
+#chat-input-controls button {
   padding: 10px;
   margin-top: 10px;
 }
@@ -113,6 +129,8 @@ button {
   cursor: pointer;
 }
 
-.close-button{
+#close-button {
   color: #d50000;
+  color: "red";
+  align-self: baseline;
 }

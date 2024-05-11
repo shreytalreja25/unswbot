@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import lionLogo from './assets/lion-logo.png';
 import logo from './assets/unswlogo.jpeg';
+import Header from './Header';
 
 function App() {
   const [input, setInput] = useState('');
@@ -17,7 +18,8 @@ function App() {
     e.preventDefault();
     if (!input) return;
 
-    const timestamp = new Date().toLocaleTimeString();
+    // const timestamp = new Date().toLocaleTimeString();
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); //Added by chetan
     const newUserMessage = { text: input, sender: 'user', time: timestamp };
     setMessages(messages => [...messages, newUserMessage]);
     
@@ -48,9 +50,9 @@ function App() {
       {isOpen && (
         <div className="chat-window">
           <div className="chat-header">
-            <img src={logo} alt="UNSW Logo" style={{ height: '80%', width: "40%" }} />
+            <img src={logo} alt="UNSW Logo" id="unswlogo" />
             <h2 style={{ color: "black",textAlign:"center" }}>Chat with UNSW Bot</h2>
-            <button onClick={toggleChat} style={{color:"red",alignSelf:"baseline"}} id="close-button">X</button>
+            <button onClick={toggleChat} id="close-button">X</button>
           </div>
           <div className="messages">
             {messages.map((msg, index) => (
