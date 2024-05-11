@@ -38,6 +38,7 @@
   height: 85vh;
   /* Adjust according to your preference */
   position: fixed;
+  /* position: relative; */
   bottom: 20px;
   right: 20px;
   width: 300px;
@@ -78,10 +79,11 @@ button {
 }
 
 #chat-input-controls {
-  width: 100%;
-  /* Ensures the input controls fill the chat window */
-  display: flex;
-  justify-content: space-evenly;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    z-index: 200; 
 }
 
 .messages {
@@ -131,6 +133,14 @@ button {
 
 #close-button {
   color: #d50000;
-  color: "red";
+  /* color: "red"; */
   align-self: baseline;
+}
+
+.loading-gif {
+  position: absolute;
+    bottom: 90px; /* Increased from 20px to avoid overlap with the input */
+    left: 10px;
+    width: 50px; /* Example size adjustment, change as needed */
+    z-index: 100; 
 }
