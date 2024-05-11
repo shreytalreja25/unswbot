@@ -4,6 +4,10 @@ import "./App.css";
 import lionLogo from "./assets/lion-logo.png";
 import logo from "./assets/unswlogo.jpeg";
 import loadingGif from "./assets/typing.gif";
+import responseSound from './assets/message-sound.mp3';  // Sound for receiving a message
+import sendSound from './assets/send-sound.mp3';         // Sound for sending a message
+
+
 
 function App() {
   const [input, setInput] = useState("");
@@ -23,6 +27,17 @@ function App() {
     setInput(e.target.value);
   };
 
+  const playSound = (type) => {
+    let soundFile;
+    if (type === 'send') {
+      soundFile = new Audio(sendSound);
+    } else if (type === 'receive') {
+      soundFile = new Audio(responseSound);
+    }
+    soundFile.play();
+  };
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input) return;
@@ -33,7 +48,8 @@ function App() {
     });
     const newUserMessage = { text: input, sender: "user", time: timestamp };
     setMessages((messages) => [...messages, newUserMessage]);
-
+    
+    playSound('send');  // Play send sound when user sends a message
     setIsLoading(true); // Start loading
 
     try {
@@ -46,6 +62,7 @@ function App() {
         time: timestamp,
       };
       setMessages((messages) => [...messages, botMessage]);
+      playSound('receive');  // Play response sound when bot sends a response
     } catch (error) {
       const errorMessage = {
         text: "Failed to get response from the server.",
@@ -53,6 +70,7 @@ function App() {
         time: timestamp,
       };
       setMessages((messages) => [...messages, errorMessage]);
+      playSound('receive');  // Play response sound for error message as well
     }
 
     setInput(""); // Clear input after sending
