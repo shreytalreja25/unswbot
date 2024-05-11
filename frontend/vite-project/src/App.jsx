@@ -3,7 +3,6 @@ import axios from 'axios';
 import './App.css';
 import lionLogo from './assets/lion-logo.png';
 import logo from './assets/unswlogo.jpeg';
-import Header from './Header';
 
 function App() {
   const [input, setInput] = useState('');
@@ -22,7 +21,7 @@ function App() {
     const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); //Added by chetan
     const newUserMessage = { text: input, sender: 'user', time: timestamp };
     setMessages(messages => [...messages, newUserMessage]);
-    
+
     try {
       const response = await axios.post('http://localhost:5000/chat', { prompt: input });
       const botMessage = { text: response.data.response, sender: 'bot', time: timestamp };
@@ -51,7 +50,7 @@ function App() {
         <div className="chat-window">
           <div className="chat-header">
             <img src={logo} alt="UNSW Logo" id="unswlogo" />
-            <h2 style={{ color: "black",textAlign:"center" }}>Chat with UNSW Bot</h2>
+            <h2 style={{ color: "black", textAlign: "center" }}>Chat with UNSW Bot</h2>
             <button onClick={toggleChat} id="close-button">X</button>
           </div>
           <div className="messages">
