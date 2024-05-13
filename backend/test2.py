@@ -4,6 +4,7 @@ import openai
 from pymongo import MongoClient
 from datetime import datetime
 from uuid import uuid4
+from urllib.parse import quote_plus
 
 openai.api_key = "sk-proj-ulcP3hqe7zORRs3HwzT5T3BlbkFJXZVLLvjCU7hBU7Kafppo"
 
@@ -11,7 +12,11 @@ app = Flask(__name__)
 CORS(app)  # This enables CORS for all domains on all routes
 
 # Setup MongoDB connection
-connStr = "mongodb://localhost:27017/"
+# connStr = "mongodb://localhost:27017/" #Adding Atlas Connection
+# Setup MongoDB connection
+username = quote_plus('shreytalreja25')
+password = quote_plus('Shrey@9999')
+connStr = f"mongodb+srv://{username}:{password}@cluster0.3vb27rr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" 
 client = MongoClient(connStr)  # Update with your MongoDB URI
 db = client.unsw_chats
 chats = db.chats
